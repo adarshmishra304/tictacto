@@ -1,0 +1,59 @@
+import java.util.*;
+public class Binary_search
+ {
+    public static void main(String[] args) 
+    {
+        Scanner sc =new Scanner(System.in);
+        System.out.println("enter no of digits");
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        String[] name=new String[n];
+        int i,j,t;
+        String temp;
+        for(i=0;i<n;i++)
+        {
+            System.out.println("enter the name ");
+            name[i]=sc.next();
+            System.out.println("enter the number");
+            arr[i]=sc.nextInt();
+            
+
+        }
+
+
+        for (i = 0; i < n - 1; i++) {
+            for (j = i + 1; j < n; j++) {
+                if (name[i].compareToIgnoreCase(name[j]) > 0) {
+                   
+                    temp = name[i];
+                    name[i] = name[j];
+                    name[j] = temp;
+
+            
+                    t = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = t;
+                }
+            }
+        }
+        System.out.println("enter name to be searched");
+        String num=sc.next();
+        int l=0,u=n-1,mid=u/2;
+        while(l<u)
+        {
+            mid=(l+u)/2;
+            if(name[mid].compareToIgnoreCase(num)==0)
+            {
+                System.out.println("name:"+name[mid]+"\n number:"+arr[mid]);
+                System.exit(0);
+            }
+            else if(name[mid].compareToIgnoreCase(num)>0)
+            u=mid;
+            else
+            l=mid;
+
+        }
+        System.out.println("wrong name");
+    }
+}
+
