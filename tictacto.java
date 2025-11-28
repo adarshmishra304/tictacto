@@ -1,7 +1,7 @@
 import java.util.*;
  public class tictacto
  {
-    public static void main() 
+    public static void main(String args[]) 
     {
 
        tictacto ob=new tictacto();
@@ -10,17 +10,16 @@ import java.util.*;
         char[][] arr=new char[3][3];
         char c='1';
         String s=" ";
+        boolean flag=true;
         for(i=2;i>=0;i--)
         {
             for(j=0;j<3;j++)
             arr[i][j]=c++;
         }
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
          for(i=0;i<3;i++)
         {
             for(j=0;j<3;j++)
-            System.out.print(arr[i][j]);
+            System.out.print(arr[i][j]+" ");
          System.out.println();
         }
         for(a=9;a>0;a--)
@@ -46,8 +45,7 @@ import java.util.*;
             else
             ob.printing(arr,0,n-7,a%2==0?'O':'X');
             
-            if(a>4)
-            {
+            
                 if((arr[0][0]==arr[0][1]&&arr[0][1]==arr[0][2])||(arr[1][0]==arr[1][1]&&arr[1][1]==arr[1][2])||
                 (arr[2][0]==arr[2][1]&&arr[2][1]==arr[2][2])||(arr[0][0]==arr[1][0]&&arr[1][0]==arr[2][0])||
                 (arr[0][1]==arr[1][1]&&arr[1][1]==arr[2][1])||(arr[0][2]==arr[1][2]&&arr[1][2]==arr[2][2])||
@@ -58,19 +56,20 @@ import java.util.*;
                     System.out.println("X won");
                     else
                     System.out.println("O won");
-                    System.exit(0);
+                flag=false;
+                    break;
                 }
-            }
+            
             
            
         }
+        if(flag){
+        System.out.println("match over");
         System.out.println("drew \n shake hand");
-    
+        }
     }
         void printing( char[][] arr,int r,int c,char z)
     {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
         int i,j;
         arr[r][c]=z;
         for(i=0;i<3;i++)
